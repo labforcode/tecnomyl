@@ -30,6 +30,10 @@ namespace TesteTecnomyl.Cadastros.Infra.Dados.Maps.Pedidos
             builder.Property(c => c.CodigoProduto)
                    .HasColumnName("codigo_produto")
                    .IsRequired();
+
+            builder.HasOne(c => c.Pedido)
+                   .WithMany(c => c.ItensPedido)
+                   .HasForeignKey(c => c.CodigoPedido);
         }
     }
 }
