@@ -15,6 +15,11 @@ namespace WebApi.Controllers
             _pedidoAppService = pedidoAppService;
         }
 
+        /// <summary>
+        /// Cadastro de pedido
+        /// </summary>
+        /// <param name="pedidoDto"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("pedido")]
         public IActionResult CadastrarPedido([FromBody] PedidoDto pedidoDto)
@@ -36,6 +41,11 @@ namespace WebApi.Controllers
             }
         }
 
+        /// <summary>
+        /// Atualização de pedido
+        /// </summary>
+        /// <param name="produtoDto"></param>
+        /// <returns></returns>
         [HttpPut]
         [Route("pedido")]
         public IActionResult AtualizarPedido([FromBody] PedidoDto produtoDto)
@@ -57,6 +67,11 @@ namespace WebApi.Controllers
             }
         }
 
+        /// <summary>
+        /// Retorna um pedido por código
+        /// </summary>
+        /// <param name="codigo"></param>
+        /// <returns></returns>
         [HttpGet]
         [Route("pedido/codigo/{codigo}")]
         public async Task<IActionResult> ObterPedidoAsync(int codigo)
@@ -73,6 +88,11 @@ namespace WebApi.Controllers
             }
         }
 
+        /// <summary>
+        /// Retorna um peido por código do cliente
+        /// </summary>
+        /// <param name="codigoCliente"></param>
+        /// <returns></returns>
         [HttpGet]
         [Route("pedido/codigo-cliente/{codigoCliente}")]
         public async Task<IActionResult> ObterPedidoPorClienteAsync(int codigoCliente)
@@ -89,6 +109,10 @@ namespace WebApi.Controllers
             }
         }
 
+        /// <summary>
+        /// Retorna todos os pedidos
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         [Route("pedidos")]
         public async Task<IActionResult> ObterPedidosAsync()

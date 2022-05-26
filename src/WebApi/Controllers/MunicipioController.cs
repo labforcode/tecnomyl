@@ -15,6 +15,11 @@ namespace WebApi.Controllers
             _municipioAppService = municipioAppService;
         }
 
+        /// <summary>
+        /// Cadastro de municipio
+        /// </summary>
+        /// <param name="municipioDto"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("municipio")]
         public IActionResult CadastrarMunicipio([FromBody] MunicipioDto municipioDto)
@@ -36,6 +41,11 @@ namespace WebApi.Controllers
             }
         }
 
+        /// <summary>
+        /// Atualização de municipio
+        /// </summary>
+        /// <param name="municipioDto"></param>
+        /// <returns></returns>
         [HttpPut]
         [Route("municipio")]
         public IActionResult AtualizarMunicipio([FromBody] MunicipioDto municipioDto)
@@ -57,6 +67,11 @@ namespace WebApi.Controllers
             }
         }
 
+        /// <summary>
+        /// Retorna um municipio por código
+        /// </summary>
+        /// <param name="codigo"></param>
+        /// <returns></returns>
         [HttpGet]
         [Route("municipio/codigo/{codigo}")]
         public async Task<IActionResult> ObterMunicipioAsync(int codigo)
@@ -73,6 +88,10 @@ namespace WebApi.Controllers
             }
         }
 
+        /// <summary>
+        /// Retorna todos os municipios
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         [Route("municipios")]
         public async Task<IActionResult> ObterMunicipiosAsync()

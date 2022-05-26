@@ -16,6 +16,11 @@ namespace WebApi.Controllers
             _produtoAppService = produtoAppService;
         }
 
+        /// <summary>
+        /// Cadastro de produto
+        /// </summary>
+        /// <param name="produtoDto"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("produto")]
         public IActionResult CadastrarProduto([FromBody] ProdutoDto produtoDto)
@@ -37,6 +42,11 @@ namespace WebApi.Controllers
             }
         }
 
+        /// <summary>
+        /// Atualização de produto
+        /// </summary>
+        /// <param name="produtoDto"></param>
+        /// <returns></returns>
         [HttpPut]
         [Route("produto")]
         public IActionResult AtualizarProduto([FromBody] ProdutoDto produtoDto)
@@ -58,6 +68,11 @@ namespace WebApi.Controllers
             }
         }
 
+        /// <summary>
+        /// Retorna um produto por código
+        /// </summary>
+        /// <param name="codigo"></param>
+        /// <returns></returns>
         [HttpGet]
         [Route("produto/codigo/{codigo}")]
         public async Task<IActionResult> ObterProdutoAsync(int codigo)
@@ -74,6 +89,11 @@ namespace WebApi.Controllers
             }
         }
 
+        /// <summary>
+        /// Retorna o valor médio de venda de um produto nos últimos doze meses
+        /// </summary>
+        /// <param name="codigo"></param>
+        /// <returns></returns>
         [HttpGet]
         [Route("produto/valor-medio/{codigo}")]
         public async Task<IActionResult> ObterValorMedioVendaProdutoUltimosDozeMesesAsync(int codigo)
@@ -90,6 +110,10 @@ namespace WebApi.Controllers
             }
         }
 
+        /// <summary>
+        /// Retorna todos os produtos
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         [Route("produtos")]
         public async Task<IActionResult> ObterProdutoAsync()
