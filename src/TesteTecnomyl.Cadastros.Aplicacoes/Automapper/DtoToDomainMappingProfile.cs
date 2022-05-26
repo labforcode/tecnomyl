@@ -17,7 +17,9 @@ namespace TesteTecnomyl.Cadastros.Aplicacoes.Automapper
             CreateMap<ClienteDto, Cliente>();
             CreateMap<ProdutoDto, Produto>();
             CreateMap<MunicipioDto, Municipio>();
-            CreateMap<PedidoDto, Pedido>();
+            CreateMap<ItemPedidoDto, ItemPedido>();
+            CreateMap<PedidoDto, Pedido>()
+                .ForMember(c => c.ItensPedido, x => x.Ignore());
         }
     }
 }

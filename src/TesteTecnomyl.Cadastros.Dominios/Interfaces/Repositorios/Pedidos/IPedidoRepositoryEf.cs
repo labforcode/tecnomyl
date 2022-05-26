@@ -6,7 +6,9 @@ namespace TesteTecnomyl.Cadastros.Dominios.Interfaces.Repositorios.Pedidos
 {
     public interface IPedidoRepositoryEf : IBaseRepositoryEf<Pedido>
     {
-        Task<Pedido> ObterPorId();
+        void AddItensPedido(List<ItemPedido> itensPedido);
+
+        Task<Pedido> ObterPorId(int codigo);
 
         Task<IEnumerable<Pedido>> ObterTodos();
     }

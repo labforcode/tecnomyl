@@ -7,21 +7,44 @@ namespace TesteTecnomyl.Cadastros.Infra.Dados.Repositorios.Pedidos
 {
     public class PedidoRepositoryEf : BaseRepositoryEf<Pedido>, IPedidoRepositoryEf
     {
-        private readonly DbTecnomyl _context;
-        private readonly DbSet<Pedido> _dbSet;
-
         public PedidoRepositoryEf(DbTecnomyl context) : base(context)
         {
         }
 
-        public Task<Pedido> ObterPorId()
+        public void AddItensPedido(List<ItemPedido> itensPedido)
         {
-            throw new NotImplementedException();
+            try
+            {
+                Context.ItensPedido.AddRange(itensPedido);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
-        public Task<IEnumerable<Pedido>> ObterTodos()
+        public async Task<Pedido> ObterPorId(int codigo)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return await Context.Pedidos.FirstOrDefaultAsync(w => w.Codigo == codigo);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+
+        public async Task<IEnumerable<Pedido>> ObterTodos()
+        {
+            try
+            {
+                return await Context.Pedidos.ToListAsync();
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
     }
 }

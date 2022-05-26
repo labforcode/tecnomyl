@@ -1,10 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TesteTecnomyl.Cadastros.Dominios.Entidades.Pedidos;
 
 namespace TesteTecnomyl.Cadastros.Infra.Dados.Maps.Pedidos
@@ -35,10 +30,6 @@ namespace TesteTecnomyl.Cadastros.Infra.Dados.Maps.Pedidos
             builder.Property(c => c.CodigoProduto)
                    .HasColumnName("codigo_produto")
                    .IsRequired();
-
-            builder.HasOne(c => c.Pedido)
-                   .WithMany(c => c.ItensPedido)
-                   .HasForeignKey(c => c.CodigoPedido);
         }
     }
 }

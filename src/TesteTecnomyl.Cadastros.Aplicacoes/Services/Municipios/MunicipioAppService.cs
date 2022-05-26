@@ -37,7 +37,8 @@ namespace TesteTecnomyl.Cadastros.Aplicacoes.Services.Municipios
 
         public void Excluir(MunicipioDto municipio)
         {
-            throw new NotImplementedException();
+            var comando = _mapper.Map<Municipio>(municipio);
+            _municipioComando.Excluir(comando);
         }
 
         public async Task<MunicipioViewModel> ObterPorId(int codigo)

@@ -1,23 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using TesteTecnomyl.Cadastros.Dominios.Entidades.Pedidos;
 using TesteTecnomyl.Cadastros.Dominios.Interfaces.Consultas.Pedidos;
+using TesteTecnomyl.Cadastros.Dominios.Interfaces.Repositorios.Pedidos;
 
 namespace TesteTecnomyl.Cadastros.Dominios.Consultas.Pedidos
 {
     public class PedidoConsulta : IPedidoConsulta
     {
-        public Task<Pedido> ObterPorId()
+        private readonly IPedidoRepositoryEf _pedidoRepositoryEf;
+
+        public PedidoConsulta(IPedidoRepositoryEf pedidoRepositoryEf)
         {
-            throw new NotImplementedException();
+            _pedidoRepositoryEf = pedidoRepositoryEf;
         }
 
-        public Task<IEnumerable<Pedido>> ObterTodos()
+        public async Task<Pedido> ObterPorId(int codigo)
         {
-            throw new NotImplementedException();
+            return await _pedidoRepositoryEf.ObterPorId(codigo);
+        }
+
+        public async Task<IEnumerable<Pedido>> ObterTodos()
+        {
+            return await _pedidoRepositoryEf.ObterTodos();
         }
     }
 }

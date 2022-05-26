@@ -58,14 +58,14 @@ namespace WebApi.Controllers
         }
 
         [HttpGet]
-        [Route("municipios")]
-        public async Task<IActionResult> ObterMunicipiosAsync()
+        [Route("municipio/codigo/{codigo}")]
+        public async Task<IActionResult> ObterMunicipioAsync([FromQuery] int codigo)
         {
             try
             {
-                var municipios = await _municipioAppService.ObterTodos();
+                var municipio = await _municipioAppService.ObterPorId(codigo);
 
-                return Ok(municipios);
+                return Ok(municipio);
             }
             catch (Exception)
             {
@@ -74,14 +74,14 @@ namespace WebApi.Controllers
         }
 
         [HttpGet]
-        [Route("municipio")]
-        public async Task<IActionResult> ObterMunicipioAsync([FromQuery] int codigo)
+        [Route("municipios")]
+        public async Task<IActionResult> ObterMunicipiosAsync()
         {
             try
             {
-                var municipio = await _municipioAppService.ObterPorId(codigo);
+                var municipios = await _municipioAppService.ObterTodos();
 
-                return Ok(municipio);
+                return Ok(municipios);
             }
             catch (Exception)
             {

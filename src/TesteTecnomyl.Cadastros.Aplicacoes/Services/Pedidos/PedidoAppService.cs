@@ -25,27 +25,36 @@ namespace TesteTecnomyl.Cadastros.Aplicacoes.Services.Pedidos
 
         public void Adicionar(PedidoDto pedido)
         {
-            var comando = _mapper.Map<Pedido>(pedido);
+            var comandoPedido = _mapper.Map<Pedido>(pedido);
+            var comandoItensPedido = _mapper.Map<List<ItemPedido>>(pedido.ItensPedido);
+
+            _pedidoComando.Adicionar(comandoPedido, comandoItensPedido);
         }
 
         public void Atualizar(PedidoDto pedido)
         {
-            var comando = _mapper.Map<Pedido>(pedido);
+            var comandoPedido = _mapper.Map<Pedido>(pedido);
+            var comandoItensPedido = _mapper.Map<List<ItemPedido>>(pedido.ItensPedido);
+
+            _pedidoComando.Atualizar(comandoPedido, comandoItensPedido);
         }
 
         public void Excluir(PedidoDto pedido)
         {
-            throw new NotImplementedException();
+            var comandoPedido = _mapper.Map<Pedido>(pedido);
+            var comandoItensPedido = _mapper.Map<List<ItemPedido>>(pedido.ItensPedido);
+
+            _pedidoComando.Excluir(comandoPedido, comandoItensPedido);
         }
 
         public async Task<PedidoViewModel> ObterPorId(int codigo)
         {
-            throw new NotImplementedException();
+            return _mapper.Map<PedidoViewModel>(await _pedidoConsulta.ObterPorId(codigo));
         }
 
         public async Task<IEnumerable<PedidoViewModel>> ObterTodos()
         {
-            throw new NotImplementedException();
+            return _mapper.Map<IEnumerable<PedidoViewModel>>(await _pedidoConsulta.ObterTodos());
         }
     }
 }

@@ -73,7 +73,7 @@ namespace WebApi.Controllers
         }
 
         [HttpGet]
-        [Route("cliente/codigo")]
+        [Route("cliente/codigo/{codigo}")]
         public async Task<IActionResult> ObterClienteAsync([FromQuery] int codigo)
         {
             try
@@ -89,7 +89,7 @@ namespace WebApi.Controllers
         }
 
         [HttpGet]
-        [Route("cliente/cpf")]
+        [Route("cliente/cpf/{cpf}")]
         public async Task<IActionResult> ObterClienteAsync([FromQuery] string cpf)
         {
             try

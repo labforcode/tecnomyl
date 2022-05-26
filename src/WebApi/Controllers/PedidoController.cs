@@ -58,14 +58,14 @@ namespace WebApi.Controllers
         }
 
         [HttpGet]
-        [Route("pedidos")]
-        public async Task<IActionResult> ObterPedidosAsync()
+        [Route("pedido/codigo/{codigo}")]
+        public async Task<IActionResult> ObterPedidoAsync([FromQuery] int codigo)
         {
             try
             {
-                var pedidos = await _pedidoAppService.ObterTodos();
+                var pedido = await _pedidoAppService.ObterPorId(codigo);
 
-                return Ok(pedidos);
+                return Ok(pedido);
             }
             catch (Exception)
             {
@@ -74,14 +74,14 @@ namespace WebApi.Controllers
         }
 
         [HttpGet]
-        [Route("pedido")]
-        public async Task<IActionResult> ObterPedidoAsync([FromQuery] int codigo)
+        [Route("pedidos")]
+        public async Task<IActionResult> ObterPedidosAsync()
         {
             try
             {
-                var pedido = await _pedidoAppService.ObterPorId(codigo);
+                var pedidos = await _pedidoAppService.ObterTodos();
 
-                return Ok(pedido);
+                return Ok(pedidos);
             }
             catch (Exception)
             {

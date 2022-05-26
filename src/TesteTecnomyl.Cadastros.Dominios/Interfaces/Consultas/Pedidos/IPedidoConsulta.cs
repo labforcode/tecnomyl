@@ -6,7 +6,7 @@ namespace TesteTecnomyl.Cadastros.Dominios.Interfaces.Consultas.Pedidos
 {
     public interface IPedidoConsulta
     {
-        Task<Pedido> ObterPorId();
+        Task<Pedido> ObterPorId(int codigo);
 
         Task<IEnumerable<Pedido>> ObterTodos();
     }

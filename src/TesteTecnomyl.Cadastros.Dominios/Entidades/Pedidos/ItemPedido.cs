@@ -1,6 +1,4 @@
-﻿using TesteTecnomyl.Cadastros.Dominios.Entidades.Produtos;
-
-namespace TesteTecnomyl.Cadastros.Dominios.Entidades.Pedidos
+﻿namespace TesteTecnomyl.Cadastros.Dominios.Entidades.Pedidos
 {
     public class ItemPedido
     {
@@ -35,8 +33,8 @@ namespace TesteTecnomyl.Cadastros.Dominios.Entidades.Pedidos
 
         public int CodigoPedido { get; private set; }
 
-        public virtual Produto Produto { get; set; }
-
         public virtual Pedido Pedido { get; set; }
+
+        public void VincularPedido(int codigoPedido) => CodigoPedido = codigoPedido;
     }
 }

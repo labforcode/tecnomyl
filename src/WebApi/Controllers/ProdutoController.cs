@@ -59,14 +59,14 @@ namespace WebApi.Controllers
         }
 
         [HttpGet]
-        [Route("produtos")]
-        public async Task<IActionResult> ObterProdutoAsync()
+        [Route("produto/codigo/{codigo}")]
+        public async Task<IActionResult> ObterProdutoAsync([FromQuery] int codigo)
         {
             try
             {
-                var produtos = await _produtoAppService.ObterTodos();
+                var produto = await _produtoAppService.ObterPorId(codigo);
 
-                return Ok(produtos);
+                return Ok(produto);
             }
             catch (Exception)
             {
@@ -75,14 +75,14 @@ namespace WebApi.Controllers
         }
 
         [HttpGet]
-        [Route("produto")]
-        public async Task<IActionResult> ObterProdutoAsync([FromQuery] int codigo)
+        [Route("produtos")]
+        public async Task<IActionResult> ObterProdutoAsync()
         {
             try
             {
-                var produto = await _produtoAppService.ObterPorId(codigo);
+                var produtos = await _produtoAppService.ObterTodos();
 
-                return Ok(produto);
+                return Ok(produtos);
             }
             catch (Exception)
             {

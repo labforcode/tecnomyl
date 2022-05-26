@@ -21,7 +21,7 @@ namespace TesteTecnomyl.Cadastros.Dominios.Entidades.Pedidos
         {
         }
 
-        private readonly List<ItemPedido> _itensPedido;
+        private List<ItemPedido> _itensPedido;
 
         public int Codigo { get; private set; }
 
@@ -29,8 +29,14 @@ namespace TesteTecnomyl.Cadastros.Dominios.Entidades.Pedidos
 
         public DateTime DataPedido { get; private set; }
 
-        public IReadOnlyCollection<ItemPedido> ItensPedido { get; }
+        public List<ItemPedido> ItensPedido { get; }
 
         public virtual Cliente Cliente { get; set; }
+
+        public void AdicionarItensPedido(List<ItemPedido> itensPedido) => _itensPedido = itensPedido;
+
+        public List<ItemPedido> ObterItensPedido() => _itensPedido;
+
+        public void AdicionarDataPedido() => DataPedido = DateTime.Now;
     }
 }

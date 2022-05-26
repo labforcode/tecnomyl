@@ -20,6 +20,11 @@ namespace TesteTecnomyl.Cadastros.Infra.Dados.Repositorios
             _dbSet.Add(t);
         }
 
+        public void Add(List<T> t)
+        {
+            _dbSet.AddRange(t);
+        }
+
         public void Update(T t)
         {
             _dbSet.Update(t);
