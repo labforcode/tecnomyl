@@ -6,6 +6,8 @@ namespace TesteTecnomyl.Cadastros.Dominios.Interfaces.Consultas.Municipios
 {
     public interface IMunicipioConsulta
     {
+        Task<string> ObterNomeMunicipio(int codigo);
+
         Task<Municipio> ObterPorId(int codigo);
 
         Task<IEnumerable<Municipio>> ObterTodos();

@@ -6,7 +6,9 @@ namespace TesteTecnomyl.Cadastros.Dominios.Interfaces.Repositorios.Clientes
 {
     public interface IClienteRepositoryEf : IBaseRepositoryEf<Cliente>
     {
-        Task<Cliente> ObterPorId();
+        Task<Cliente> ObterPorId(int codigo);
+
+        Task<Cliente> ObterPorCpf(string cpf);
 
         Task<IEnumerable<Cliente>> ObterTodos();
     }

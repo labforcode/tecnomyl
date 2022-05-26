@@ -7,21 +7,44 @@ namespace TesteTecnomyl.Cadastros.Infra.Dados.Repositorios.Clientes
 {
     public class ClienteRepositoryEf : BaseRepositoryEf<Cliente>, IClienteRepositoryEf
     {
-        private readonly DbTecnomyl _context;
-        private readonly DbSet<Cliente> _dbSet;
-
         public ClienteRepositoryEf(DbTecnomyl context) : base(context)
         {
         }
 
-        public Task<Cliente> ObterPorId()
+        public async Task<Cliente> ObterPorId(int codigo)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return await Context.Clientes.FirstOrDefaultAsync(w => w.Codigo == codigo);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
-        public Task<IEnumerable<Cliente>> ObterTodos()
+        public async Task<Cliente> ObterPorCpf(string cpf)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return await Context.Clientes.FirstOrDefaultAsync(w => w.Cpf == cpf);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+
+        public async Task<IEnumerable<Cliente>> ObterTodos()
+        {
+            try
+            {
+                return await Context.Clientes.ToListAsync();
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
     }
 }

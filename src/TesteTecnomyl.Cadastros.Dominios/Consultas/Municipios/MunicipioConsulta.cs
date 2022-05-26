@@ -15,6 +15,13 @@ namespace TesteTecnomyl.Cadastros.Dominios.Consultas.Municipios
             _municipioRepositoryEf = municipioRepositoryEf;
         }
 
+        public async Task<string> ObterNomeMunicipio(int codigo)
+        {
+            var municipio = await _municipioRepositoryEf.ObterPorId(codigo);
+
+            return municipio.Nome;
+        }
+
         public async Task<Municipio> ObterPorId(int codigo)
         {
             return await _municipioRepositoryEf.ObterPorId(codigo);

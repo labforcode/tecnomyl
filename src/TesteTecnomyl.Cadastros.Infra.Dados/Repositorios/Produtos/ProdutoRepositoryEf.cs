@@ -7,21 +7,32 @@ namespace TesteTecnomyl.Cadastros.Infra.Dados.Repositorios.Produtos
 {
     public class ProdutoRepositoryEf : BaseRepositoryEf<Produto>, IProdutoRepositoryEf
     {
-        private readonly DbTecnomyl _context;
-        private readonly DbSet<Produto> _dbSet;
-
         public ProdutoRepositoryEf(DbTecnomyl context) : base(context)
         {
         }
 
-        public Task<Produto> ObterPorId()
+        public async Task<Produto> ObterPorId(int codigo)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return await Context.Produtos.FirstOrDefaultAsync(w => w.Codigo == codigo);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
-        public Task<IEnumerable<Produto>> ObterTodos()
+        public async Task<IEnumerable<Produto>> ObterTodos()
         {
-            throw new NotImplementedException();
+            try
+            {
+                return await Context.Produtos.ToListAsync();
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
     }
 }

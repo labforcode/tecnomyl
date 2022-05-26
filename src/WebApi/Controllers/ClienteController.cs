@@ -73,12 +73,30 @@ namespace WebApi.Controllers
         }
 
         [HttpGet]
-        [Route("cliente")]
+        [Route("cliente/codigo")]
         public async Task<IActionResult> ObterClienteAsync([FromQuery] int codigo)
         {
             try
             {
                 var cliente = await _clienteAppService.ObterPorId(codigo);
+
+                return Ok(cliente);
+            }
+            catch (Exception)
+            {
+                return StatusCode(500, "Serviço indisponível, tente novamente mais tarde");
+            }
+        }
+
+        [HttpGet]
+        [Route("cliente/cpf")]
+        public async Task<IActionResult> ObterClienteAsync([FromQuery] string cpf)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(cpf)) return BadRequest("Cpf inválido.");
+
+                var cliente = await _clienteAppService.ObterPorCpf(cpf);
 
                 return Ok(cliente);
             }

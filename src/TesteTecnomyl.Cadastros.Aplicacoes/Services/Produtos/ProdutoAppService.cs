@@ -26,26 +26,29 @@ namespace TesteTecnomyl.Cadastros.Aplicacoes.Services.Produtos
         public void Adicionar(ProdutoDto produto)
         {
             var comando = _mapper.Map<Produto>(produto);
+            _produtoComando.Adicionar(comando);
         }
 
         public void Atualizar(ProdutoDto produto)
         {
             var comando = _mapper.Map<Produto>(produto);
+            _produtoComando.Atualizar(comando);
         }
 
         public void Excluir(ProdutoDto produto)
         {
-            throw new NotImplementedException();
+            var comando = _mapper.Map<Produto>(produto);
+            _produtoComando.Excluir(comando);
         }
 
         public async Task<ProdutoViewModel> ObterPorId(int codigo)
         {
-            throw new NotImplementedException();
+            return _mapper.Map<ProdutoViewModel>(await _produtoConsulta.ObterPorId(codigo));
         }
 
         public async Task<IEnumerable<ProdutoViewModel>> ObterTodos()
         {
-            throw new NotImplementedException();
+            return _mapper.Map<IEnumerable<ProdutoViewModel>>(await _produtoConsulta.ObterTodos());
         }
     }
 }

@@ -6,7 +6,7 @@ namespace TesteTecnomyl.Cadastros.Dominios.Interfaces.Repositorios.Produtos
 {
     public interface IProdutoRepositoryEf : IBaseRepositoryEf<Produto>
     {
-        Task<Produto> ObterPorId();
+        Task<Produto> ObterPorId(int codigo);
 
         Task<IEnumerable<Produto>> ObterTodos();
     }

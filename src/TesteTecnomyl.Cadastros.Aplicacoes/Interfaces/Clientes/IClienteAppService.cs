@@ -13,6 +13,8 @@ namespace TesteTecnomyl.Cadastros.Aplicacoes.Interfaces.Clientes
 
         Task<ClienteViewModel> ObterPorId(int codigo);
 
+        Task<ClienteViewModel> ObterPorCpf(string cpf);
+
         Task<IEnumerable<ClienteViewModel>> ObterTodos();
     }
 }
