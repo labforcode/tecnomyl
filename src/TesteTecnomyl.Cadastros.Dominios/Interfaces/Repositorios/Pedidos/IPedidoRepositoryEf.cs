@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using TesteTecnomyl.Cadastros.Dominios.Entidades.Pedidos;
 
@@ -10,6 +11,14 @@ namespace TesteTecnomyl.Cadastros.Dominios.Interfaces.Repositorios.Pedidos
 
         Task<Pedido> ObterPorId(int codigo);
 
-        Task<IEnumerable<Pedido>> ObterTodos();
+        Task<List<Pedido>> ObterPorCodigoCliente(int codigoCliente);
+
+        Task<List<ItemPedido>> ObterItensPedido(int codigoPedido);
+
+        Task<List<ItemPedido>> ObterItensPedidoPorCodigos(List<int> codigos);
+
+        Task<List<Pedido>> ObterPedidos(DateTime dataInicio, DateTime dataFim);
+
+        Task<List<Pedido>> ObterTodos();
     }
 }

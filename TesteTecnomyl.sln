@@ -5,6 +5,7 @@ VisualStudioVersion = 17.1.32210.238
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{26DE3B69-5E3E-4805-A37F-928D381FC2FE}"
 	ProjectSection(SolutionItems) = preProject
+		docs\queries.sql = docs\queries.sql
 		docs\README.md = docs\README.md
 	EndProjectSection
 EndProject
@@ -28,13 +29,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TesteTecnomyl.Cadastros.Dom
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.1-Dados", "3.1-Dados", "{8D3641E5-98F2-471C-BD0E-EA7C18A7494C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TesteTecnomyl.Cadastros.Infra.Dados", "src\TesteTecnomyl.Cadastros.Infra.Dados\TesteTecnomyl.Cadastros.Infra.Dados.csproj", "{858C6A05-6E85-46BB-A8AA-9D0E8A2591C9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TesteTecnomyl.Cadastros.Infra.Dados", "src\TesteTecnomyl.Cadastros.Infra.Dados\TesteTecnomyl.Cadastros.Infra.Dados.csproj", "{858C6A05-6E85-46BB-A8AA-9D0E8A2591C9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.2-CrossCutting", "3.2-CrossCutting", "{EA6BA0C0-547A-4737-A3F6-08CC6B4A5DAF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TesteTecnomyl.Cadastros.Infra.IoC", "src\TesteTecnomyl.Cadastros.Infra.IoC\TesteTecnomyl.Cadastros.Infra.IoC.csproj", "{D1DABB4C-BA11-4D0D-9DE5-F57450C02223}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TesteTecnomyl.Cadastros.Infra.IoC", "src\TesteTecnomyl.Cadastros.Infra.IoC\TesteTecnomyl.Cadastros.Infra.IoC.csproj", "{D1DABB4C-BA11-4D0D-9DE5-F57450C02223}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TesteTecnomyl.Cadastros.Aplicacoes", "src\TesteTecnomyl.Cadastros.Aplicacoes\TesteTecnomyl.Cadastros.Aplicacoes.csproj", "{B3CF1CF6-4A1C-4885-9C0E-8BC4D7306891}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TesteTecnomyl.Cadastros.Aplicacoes", "src\TesteTecnomyl.Cadastros.Aplicacoes\TesteTecnomyl.Cadastros.Aplicacoes.csproj", "{B3CF1CF6-4A1C-4885-9C0E-8BC4D7306891}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

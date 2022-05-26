@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using TesteTecnomyl.Cadastros.Aplicacoes.DTOs.Produtos;
+using TesteTecnomyl.Cadastros.Aplicacoes.Interfaces.Pedidos;
 using TesteTecnomyl.Cadastros.Aplicacoes.Interfaces.Produtos;
 using TesteTecnomyl.Cadastros.Aplicacoes.ViewModels.Produtos;
 using TesteTecnomyl.Cadastros.Dominios.Entidades.Produtos;
@@ -13,14 +14,17 @@ namespace TesteTecnomyl.Cadastros.Aplicacoes.Services.Produtos
         private readonly IMapper _mapper;
         private readonly IProdutoComando _produtoComando;
         private readonly IProdutoConsulta _produtoConsulta;
+        private readonly IPedidoAppService _pedidoAppService;
 
         public ProdutoAppService(IMapper mapper,
                                  IProdutoComando produtoComando,
-                                 IProdutoConsulta produtoConsulta)
+                                 IProdutoConsulta produtoConsulta,
+                                 IPedidoAppService pedidoAppService)
         {
             _mapper = mapper;
             _produtoComando = produtoComando;
             _produtoConsulta = produtoConsulta;
+            _pedidoAppService = pedidoAppService;
         }
 
         public void Adicionar(ProdutoDto produto)
@@ -44,6 +48,28 @@ namespace TesteTecnomyl.Cadastros.Aplicacoes.Services.Produtos
         public async Task<ProdutoViewModel> ObterPorId(int codigo)
         {
             return _mapper.Map<ProdutoViewModel>(await _produtoConsulta.ObterPorId(codigo));
+        }
+
+        public async Task<ProdutoValorMedioViewModel> ObterValorMedioVendaProdutoUltimosDozeMesesAsync(int codigoProduto)
+        {
+            var dataInicio = new DateTime((DateTime.Now.Year - 1), DateTime.Now.Month, DateTime.Now.Day);
+            var dataFim = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day).AddDays(1).AddMilliseconds(-1);
+
+            var produto = await _produtoConsulta.ObterPorId(codigoProduto);
+
+            var pedidos = await _pedidoAppService.ObterPedidos(dataInicio, dataFim);
+            var codigosPedido = pedidos.Select(s => s.Codigo).ToList();
+            var itensPedidos = await _pedidoAppService.ObterItensPedidoPorCodigos(codigosPedido);
+            var itensPedidosFiltradoPorProduto = itensPedidos.Where(w => w.CodigoProduto == codigoProduto).ToList();
+            var valorMedio = itensPedidosFiltradoPorProduto.Sum(s => s.Valor) / 12;
+            var produtoValorMedio = new ProdutoValorMedioViewModel
+            {
+                Codigo = codigoProduto,
+                Nome = produto.Nome,
+                ValorMedio = valorMedio
+            };
+
+            return produtoValorMedio;
         }
 
         public async Task<IEnumerable<ProdutoViewModel>> ObterTodos()

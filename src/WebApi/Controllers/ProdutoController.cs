@@ -75,6 +75,22 @@ namespace WebApi.Controllers
         }
 
         [HttpGet]
+        [Route("produto/valor-medio/{codigo}")]
+        public async Task<IActionResult> ObterValorMedioVendaProdutoUltimosDozeMesesAsync(int codigo)
+        {
+            try
+            {
+                var media = await _produtoAppService.ObterValorMedioVendaProdutoUltimosDozeMesesAsync(codigo);
+
+                return Ok(media);
+            }
+            catch (Exception)
+            {
+                return StatusCode(500, "Serviço indisponível, tente novamente mais tarde");
+            }
+        }
+
+        [HttpGet]
         [Route("produtos")]
         public async Task<IActionResult> ObterProdutoAsync()
         {

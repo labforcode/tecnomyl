@@ -74,6 +74,22 @@ namespace WebApi.Controllers
         }
 
         [HttpGet]
+        [Route("pedido/codigo-cliente/{codigoCliente}")]
+        public async Task<IActionResult> ObterPedidoPorClienteAsync(int codigoCliente)
+        {
+            try
+            {
+                var pedido = await _pedidoAppService.ObterPorCodigoCliente(codigoCliente);
+
+                return Ok(pedido);
+            }
+            catch (Exception)
+            {
+                return StatusCode(500, "Serviço indisponível, tente novamente mais tarde");
+            }
+        }
+
+        [HttpGet]
         [Route("pedidos")]
         public async Task<IActionResult> ObterPedidosAsync()
         {

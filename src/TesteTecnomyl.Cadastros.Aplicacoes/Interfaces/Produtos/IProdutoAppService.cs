@@ -13,6 +13,8 @@ namespace TesteTecnomyl.Cadastros.Aplicacoes.Interfaces.Produtos
 
         Task<ProdutoViewModel> ObterPorId(int codigo);
 
+        Task<ProdutoValorMedioViewModel> ObterValorMedioVendaProdutoUltimosDozeMesesAsync(int codigo);
+
         Task<IEnumerable<ProdutoViewModel>> ObterTodos();
     }
 }

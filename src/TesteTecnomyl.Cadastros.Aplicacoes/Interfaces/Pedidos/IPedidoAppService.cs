@@ -13,6 +13,12 @@ namespace TesteTecnomyl.Cadastros.Aplicacoes.Interfaces.Pedidos
 
         Task<PedidoViewModel> ObterPorId(int codigo);
 
-        Task<IEnumerable<PedidoViewModel>> ObterTodos();
+        Task<List<PedidoViewModel>> ObterPorCodigoCliente(int codigoCliente);
+
+        Task<List<PedidoViewModel>> ObterPedidos(DateTime dataInicio, DateTime dataFim);
+
+        Task<List<PedidoViewModel>> ObterTodos();
+
+        Task<List<ItemPedidoViewModel>> ObterItensPedidoPorCodigos(List<int> codigos);
     }
 }
