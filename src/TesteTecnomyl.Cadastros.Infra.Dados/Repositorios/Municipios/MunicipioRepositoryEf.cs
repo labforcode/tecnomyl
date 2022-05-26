@@ -7,19 +7,15 @@ namespace TesteTecnomyl.Cadastros.Infra.Dados.Repositorios.Municipios
 {
     public class MunicipioRepositoryEf : BaseRepositoryEf<Municipio>, IMunicipioRepositoryEf
     {
-        private readonly DbTecnomyl _context;
-        private readonly DbSet<Municipio> _dbSet;
-
         public MunicipioRepositoryEf(DbTecnomyl context) : base(context)
         {
-            _context = context;
         }
 
         public async Task<Municipio> ObterPorId(int codigo)
         {
             try
             {
-                throw new NotImplementedException();
+                return await Context.Municipios.FirstOrDefaultAsync(w => w.Codigo == codigo);
             }
             catch (Exception e)
             {
@@ -27,11 +23,11 @@ namespace TesteTecnomyl.Cadastros.Infra.Dados.Repositorios.Municipios
             }
         }
 
-        public Task<IEnumerable<Municipio>> ObterTodos()
+        public async Task<IEnumerable<Municipio>> ObterTodos()
         {
             try
             {
-                throw new NotImplementedException();
+                return await Context.Municipios.ToListAsync();
             }
             catch (Exception e)
             {

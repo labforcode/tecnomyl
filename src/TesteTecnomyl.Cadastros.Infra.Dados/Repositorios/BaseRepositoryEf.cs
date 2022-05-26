@@ -6,13 +6,13 @@ namespace TesteTecnomyl.Cadastros.Infra.Dados.Repositorios
 {
     public class BaseRepositoryEf<T> : IBaseRepositoryEf<T> where T : class
     {
-        private readonly DbTecnomyl _context;
+        protected DbTecnomyl Context;
         private readonly DbSet<T> _dbSet;
 
         public BaseRepositoryEf(DbTecnomyl context)
         {
-            _context = context;
-            _dbSet = _context.Set<T>();
+            Context = context;
+            _dbSet = context.Set<T>();
         }
 
         public void Add(T t)
@@ -31,7 +31,6 @@ namespace TesteTecnomyl.Cadastros.Infra.Dados.Repositorios
         }
         public void Dispose()
         {
-            _context.Dispose();
             GC.SuppressFinalize(this);
         }
     }
