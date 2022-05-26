@@ -59,7 +59,7 @@ namespace WebApi.Controllers
 
         [HttpGet]
         [Route("municipio/codigo/{codigo}")]
-        public async Task<IActionResult> ObterMunicipioAsync([FromQuery] int codigo)
+        public async Task<IActionResult> ObterMunicipioAsync(int codigo)
         {
             try
             {
